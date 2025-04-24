@@ -1,0 +1,16 @@
+<hr>
+<h1>For Loop</h1>
+ @for (user of users; track $index) {
+
+    <h2>{{user}}</h2>
+ }
+
+ <hr>
+
+ @for(student of students ; track student; let id=$index){
+    <h2>{{id+1}}- Name:{{student.name}}, Age:{{student.age}}, Year:{{student.year}}</h2><button (click)="getName(student.name)">Get Name</button>
+
+}
+<h3 style="background-color: red;">{{name}}</h3>
+
+ 

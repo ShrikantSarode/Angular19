@@ -1,0 +1,32 @@
+#marks-form {
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+
+.btn {
+  margin: 7px;
+}
+
+.chart1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chartContainer {
+  width: 600px;
+  height: 400px;
+}
+
+#settings-btn {
+  margin-top: 16px;
+}
+
+.btn{
+    padding: 10px;
+    box-shadow: 3px 2px 8px black;
+}
+.input{
+  box-shadow: 3px 2px 8px black;
+}
+ 

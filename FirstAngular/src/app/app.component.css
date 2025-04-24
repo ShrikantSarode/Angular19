@@ -1,0 +1,11 @@
+.logo{
+    color: #40A9B7;
+    font-size: 30px;
+}
+ul{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    /* border: 1px solid; */
+    width: 100%;    
+}

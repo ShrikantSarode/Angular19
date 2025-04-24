@@ -1,0 +1,24 @@
+<button (click)="handleColor(1)">Red</button>
+<button (click)="handleColor(2)">Blue</button>
+<button (click)="handleColor(3)">Orange</button>
+<button (click)="handleColor(4)">Other</button>
+<input type="text" (input)="handleInput($event)" (click)="handleInput($event)" name="" id="">
+
+<!-- <input type="text" (input)="" name="" id=""> -->
+
+
+@if (color==1) {
+
+<div class="box" id="box1"></div>
+}@else if (color==2) {
+
+<div class="box" id="box2"></div>
+
+}@else if (color==3) {
+
+
+<div class="box" id="box3"></div>
+}@else {
+
+<div class="box" id="box4"></div>
+}

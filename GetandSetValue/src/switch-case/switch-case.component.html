@@ -1,0 +1,27 @@
+<hr>
+<h1>Switch Case</h1>
+
+<button class="btn" (click)="switchColors('red')">Red</button>
+<button class="btn" (click)="switchColors('yellow')">Yellow</button>
+<button class="btn" (click)="switchColors('green')">Green</button>
+<button class="btn" (click)="switchColors('orange')">Orange</button>
+<button class="btn" (click)="switchColors('gold')">Gold</button>
+
+@switch (color) {
+
+    @case ('red') {
+        <h1 style="background-color: red;">Red Color</h1>
+    }
+    @case ('yellow') {
+        <h1 style="background-color: yellow;">yellow Color</h1>
+    }
+    @case ('green') {
+        <h1 style="background-color: green;">green Color</h1>
+    }
+    @case ('orange') {
+        <h1 style="background-color: orange;">orange Color</h1>
+    }
+    @default {
+        <h1 style="background-color: pink;">No Color Match</h1>
+    }
+}

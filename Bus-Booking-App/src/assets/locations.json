@@ -1,0 +1,97 @@
+[
+    {
+      "locationId": 136,
+      "locationName": "NagPur",
+      "code": "NPR"
+    },
+    {
+      "locationId": 137,
+      "locationName": "Bangalore",
+      "code": "34"
+    },
+    {
+      "locationId": 138,
+      "locationName": "Palakkad",
+      "code": "35"
+    },
+    {
+      "locationId": 139,
+      "locationName": "Tirunelveli",
+      "code": "TNV"
+    },
+    {
+      "locationId": 140,
+      "locationName": "Chennai",
+      "code": "MAA"
+    },
+    {
+      "locationId": 141,
+      "locationName": "Coimbatore",
+      "code": "CJB"
+    },
+    {
+      "locationId": 142,
+      "locationName": "Madurai",
+      "code": "IXM"
+    },
+    {
+      "locationId": 143,
+      "locationName": "Tiruchirappalli",
+      "code": "TRZ"
+    },
+    {
+      "locationId": 146,
+      "locationName": "Cairo",
+      "code": "string"
+    },
+    {
+      "locationId": 147,
+      "locationName": "Cairo",
+      "code": "CAI"
+    },
+    {
+      "locationId": 148,
+      "locationName": "string",
+      "code": "string"
+    },
+    {
+      "locationId": 149,
+      "locationName": "string",
+      "code": "string"
+    },
+    {
+      "locationId": 150,
+      "locationName": "Pune",
+      "code": "PNE"
+    },
+    {
+      "locationId": 151,
+      "locationName": "string",
+      "code": "string"
+    },
+    {
+      "locationId": 152,
+      "locationName": "string",
+      "code": "string"
+    },
+    {
+      "locationId": 153,
+      "locationName": "Hyd",
+      "code": "string"
+    },
+    {
+      "locationId": 154,
+      "locationName": "Hyd",
+      "code": "string"
+    },
+    {
+      "locationId": 155,
+      "locationName": "Hyd",
+      "code": "string"
+    },
+    {
+      "locationId": 156,
+      "locationName": "Kkd",
+      "code": "k123"
+    }
+  ]

@@ -1,0 +1,18 @@
+.navbar{
+    height: 100px;
+    width: 100%;
+    
+}
+ul{
+    height: 100px;
+    /* border: 1px solid black; */
+}
+
+ul li {
+    list-style: none;
+}
+.logo{
+    color:  rgb(0, 134, 174);
+    font-size: 30px !important;
+    font-weight: 600;
+}

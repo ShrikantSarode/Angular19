@@ -1,0 +1,17 @@
+.hero {
+    /* background-image: url(../Assets/headphone-1672627_640.jpg); */
+    margin: auto;
+    height:500px;
+    width: 500px;
+    border-radius:30% 30% 30% 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+}
+.btn{
+    margin: 5px;
+    color: #40A9B7;
+    background-color: black;
+    outline: none;
+    box-shadow: 4px 4px 4px black;
+}

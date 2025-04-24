@@ -1,0 +1,143 @@
+<h1 class="container-fluid text-center m-5">Bus Booking System</h1>
+
+<div class="container search-bus text-center">
+  <div class="row justify-content-around align-items-center mb-4">
+    <!-- PickUp : This is coming from master.service -->
+    <div class="col-md-3 m-4 p-4">
+      <div class="input-group">
+        <label class="input-group-text" for="pickupSelect">PickUp</label>
+        <select
+          class="form-select"
+          id="pickupSelect"
+          [(ngModel)]="searchObj.fromLocation"
+        >
+          <option value="">Select Pickup</option>
+          <option
+            *ngFor="let item of location$ | async"
+            [value]="item.locationId"
+          >
+            {{ item.locationName }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Destination -->
+    <div class="col-md-3">
+      <div class="input-group">
+        <label class="input-group-text" for="destinationSelect"
+          >Destination</label
+        >
+        <select
+          class="form-select"
+          id="destinationSelect"
+          [(ngModel)]="searchObj.toLocation"
+        >
+          <option value="">Select Destination</option>
+          <option
+            *ngFor="let item of location$ | async"
+            [value]="item.locationId"
+          >
+            {{ item.locationName }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Date -->
+    <div class="col-md-3">
+      <div class="input-group">
+        <label class="input-group-text" for="journeyDate">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="journeyDate"
+          [(ngModel)]="searchObj.travelDate"
+        />
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <div class="col-md-2">
+      <button class="btn btn-dark px-4 py-2" (click)="onSearch()">
+        Search Buses
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<!-- Search Buses List -->
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        @for(item of busList;track $index){
+        <div class="card w-75 mb-4">
+          <div class="card-body row ">
+            <div class="col-md-2">
+              <h5 class="card-title">
+                <strong> {{ item.busName }} </strong>
+              </h5>
+              <!-- <p class="card-text">Seat Available:{{ item.seatAvailability }}</p> -->
+              <!-- <p class="card-text">A/C Sleeper (2+1)</p> -->
+             
+            </div>
+            <!-- depature -->
+            <div class="col-md-2">
+              <h5 class="card-title">
+                <strong> {{ item.departureTime | date : "hh:mm:ss" }} </strong>
+              </h5>
+              <p class="card-text">Depature</p>
+            </div>
+  
+            <!-- Arrival -->
+  
+            <div class="col-md-2">
+              <h5 class="card-title">
+                <!-- <strong> {{ item.departureTime | date : "hh:mm:ss" }} </strong> -->
+                <strong>  23:00:00</strong>
+              </h5>
+              <p class="card-text">Arrival</p>
+            </div>
+  
+            <!-- Rating -->
+  
+            <div class="col-md-2">
+              <h5 class="card-title">
+                <!-- <strong> {{ item.departureTime | date : "hh:mm:ss" }} </strong> -->
+                <strong>  4⭐</strong>
+              </h5>
+              <p class="card-text">Rating</p>
+            </div>
+  
+            <!--  Price-->
+  
+            <div class="col-md-2">
+              <h5 class="card-title">
+                <!-- <strong> {{ item.departureTime | date : "hh:mm:ss" }} </strong> -->
+                <strong>  ₹900</strong>
+              </h5>
+              <p class="card-text">Price</p>
+            </div>
+  
+            <!-- Seat Available -->
+            <div class="col-md-2 ">
+              <h5 class="card-title text-center">
+                <!-- <strong> {{ item.departureTime | date : "hh:mm:ss" }} </strong> -->
+                <strong >  {{ item.seatAvailability }}</strong>
+              </h5>
+              <p class="card-text">Seat Available</p>
+              <a routerLink="/booking" class="btn btn-primary m-2" (click)="btnClick()">Book</a>
+            </div>
+          </div>
+        </div>
+  
+        }
+      </div>
+    </div>
+  </div>
+  
+</div>

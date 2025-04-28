@@ -1,11 +1,44 @@
+<app-home></app-home>
+
+<hr />
+
 <h2>Reservation List</h2>
 
-<ul>
-    <li *ngFor="let reservation of reservations">
-        GuestName:{{reservation.guestName}} <br>
-        GuestEmail:{{reservation.guestEmail}} <br>
-        Room Number:{{reservation.roomNumber}} <br>
-        Check-In:{{reservation.checkInDate}} <br>
-        Check-Out:{{reservation.checkOutDate}} <br>
-    </li>
-</ul>
+<table class="table table-warning">
+  <thead>
+    <tr>
+      <th>GuestName</th>
+      <th>guestEmail</th>
+      <th>Room Number</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.guestName }}</td>
+      <td>{{ reservation.guestEmail }}</td>
+      <td>{{ reservation.roomNumber }}</td>
+      <td>{{ reservation.checkInDate }}</td>
+      <td>{{ reservation.checkOutDate }}</td>
+      <td>
+        <button class="btn btn-danger p-1 m-2" (click)="deleteReservation(reservation.id)">Delete</button>
+        <button class="btn btn-success p-2 m-2" [routerLink]="['/edit', reservation.id]">Edit</button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<!-- <ul>
+  <li *ngFor="let reservation of reservations">
+    GuestName:{{ reservation.guestName }} <br />
+    GuestEmail:{{ reservation.guestEmail }} <br />
+    Room Number:{{ reservation.roomNumber }} <br />
+    Check-In:{{ reservation.checkInDate }} <br />
+    Check-Out:{{ reservation.checkOutDate }} <br />
+    <button (click)="deleteReservation(reservation.id)">Delete</button>
+    <button [routerLink]="['/edit', reservation.id]">Edit</button>
+  </li>
+</ul> -->

@@ -9,24 +9,23 @@ import {
 } from '@angular/forms';
 import { ReservationService } from '../reservation/reservation.service';
 import { Reservation } from '../models/reservation';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { HomeComponent } from "../home/home.component";
 
 @Component({
   selector: 'app-reservation-form',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, HomeComponent,RouterModule],
   templateUrl: './reservation-form.component.html',
   styleUrl: './reservation-form.component.css',
 })
 export class ReservationFormComponent implements OnInit {
-  reservationForm: FormGroup = new FormGroup({
-
-
-  });
+  reservationForm: FormGroup = new FormGroup({});
 
   constructor(
     private formBuilder: FormBuilder,
     private reservationService: ReservationService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -37,17 +36,38 @@ export class ReservationFormComponent implements OnInit {
       guestEmail: ['', [Validators.required, Validators.email]],
       roomNumber: ['', Validators.required],
     });
-  }
 
-  onSubmit() {
-    if (this.reservationForm.valid) {
-      let reservation: Reservation = this.reservationForm.value;
-      this.reservationService.addReservation(reservation);
-      console.log(this.reservationForm.value);
-      this.reservationForm.reset();
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-      this.router.navigate(['/list'])
-      
+    if (id) {
+      let reservation = this.reservationService.getReservation(id);
+      if (reservation) {
+        this.reservationForm.patchValue(reservation);
+      }
     }
   }
+
+  onSubmit(): void {
+    if (this.reservationForm.valid) {
+      let reservation: Reservation = this.reservationForm.value;
+  
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+  
+      if (id) {
+        // Update reservation
+        this.reservationService.updateReservation(id, reservation);
+      } else {
+        // Add new reservation
+        this.reservationService.addReservation(reservation);
+      }
+  
+      console.log('Reservation submitted:', this.reservationForm.value);
+      this.reservationForm.reset();
+  
+      this.router.navigate(['/list']);
+    } else {
+      console.error('Form is invalid');
+    }
+  }
+  
 }

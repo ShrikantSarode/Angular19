@@ -26,7 +26,9 @@ export class MarksComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   ngAfterViewInit(): void {
     this.initChart();
@@ -90,11 +92,24 @@ export class MarksComponent implements OnInit, AfterViewInit {
     }
   }
 
-  removeSubject() {
-    const subjectName = prompt('Enter the name of the subject to remove:');
-    if (subjectName && this.profileForm.contains(subjectName)) {
-      this.profileForm.removeControl(subjectName);
-      this.onSubmit();
+  removeSubject(index: number) {
+    const controlNames = Object.keys(this.profileForm.controls);  
+    if (index >= 0 && index < controlNames.length) {
+        const subjectName = controlNames[index];  
+        this.profileForm.removeControl(subjectName);  
+        this.onSubmit();
+        alert(`Subject '${subjectName}' removed`);
+    } else {
+        alert('Invalid index');
     }
-  }
+}
+
+
+  // removeSubject() {
+  //   const subjectName = prompt('Enter the name of the subject to remove:');
+  //   if (subjectName && this.profileForm.contains(subjectName)) {
+  //     this.profileForm.removeControl(subjectName);
+  //     this.onSubmit();
+  //   }
+  // }
 }

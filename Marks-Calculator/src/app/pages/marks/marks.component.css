@@ -20,7 +20,10 @@
 
 #settings-btn {
   margin-top: 16px;
+  float: right;
+  /* border: 1px solid red; */
 }
+
 
 .btn{
     padding: 10px;

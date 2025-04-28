@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TodoList": {
+    "hotel-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/todo-list",
+            "outputPath": "dist/hotel-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,8 +27,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -60,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TodoList:build:production"
+              "buildTarget": "hotel-app:build:production"
             },
             "development": {
-              "buildTarget": "TodoList:build:development"
+              "buildTarget": "hotel-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +85,6 @@
               }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TodoList": {
+    "book-management-system": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/todo-list",
+            "outputPath": "dist/book-management-system",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,8 +27,8 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TodoList:build:production"
+              "buildTarget": "book-management-system:build:production"
             },
             "development": {
-              "buildTarget": "TodoList:build:development"
+              "buildTarget": "book-management-system:build:development"
             }
           },
           "defaultConfiguration": "development"

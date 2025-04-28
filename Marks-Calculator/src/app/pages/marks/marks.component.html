@@ -3,11 +3,41 @@
 </div>
 <div id="marks-form" class="container text-center mt-5 border">
   <div class="row text-center">
-    <div class="col-6">
-      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <!-- add btn -->
+
+    <div class="col-6 d-flex justify-content-start">
+      <button
+        id="add-subject-btn"
+        (click)="addSubject()"
+        class="btn btn-success"
+      >
+        <img src="plus.png" height="30px" width="30px" alt="" />
+      </button>
+    </div>
+
+    <div class="col-6 d-flex justify-content-end align-items-center">
+      <!-- setting btn -->
+      <button id="settings-btn" (click)="toggleSettings()" class="btn btn-dark">
+        <img src="gear.png" height="30px" width="30px" alt="" />
+      </button>
+    </div>
+
+    <!-- form -->
+    <div class="col-4 d-flex justify-content-start align-items-center">
+
+      
+      <!-- toggle of setting btn -->
+      <form
+        [formGroup]="profileForm"
+        (ngSubmit)="onSubmit()"
+        *ngIf="showSettings"
+        id="settings-buttons"
+        class="settings-buttons mt-3"
+      >
+        <!-- inp -->
         <div
-          *ngFor="let control of profileForm.controls | keyvalue"
-          class="p-4"
+          *ngFor="let control of profileForm.controls | keyvalue; index as i"
+          class="p-2"
         >
           <label>{{ control.key }}</label
           ><br />
@@ -17,17 +47,33 @@
             type="text"
             [formControlName]="control.key"
           />
+
+          <button
+            id="remove-subject-btn"
+            (click)="removeSubject(i)"
+            class="btn btn-danger"
+          >
+            <img src="recycle-bin.png" height="20px" alt="" />
+          </button>
         </div>
+
         <div class="mb-5">
-          <button class="btn btn-warning p-3 mt-4">Submit</button>
+          <button class="btn btn-success p-3 mt-4">Save</button>
+          <button
+            class="btn btn-danger p-3 mt-4"
+            (click)="showSettings = false"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
 
+    <!-- chart -->
     <div class="col-6">
       <div id="chart-section" class="container mt-5 text-center">
         <div class="row chart1">
-          <div class="col-6">
+          <div class="col-4">
             <div
               id="chartContainer"
               #chartContainer
@@ -35,37 +81,37 @@
             ></div>
           </div>
         </div>
-
-        <div class="col-6 mt-5 text-center">
-          <button
-            id="settings-btn"
-            (click)="toggleSettings()"
-            class="btn btn-dark"
-          >
-            Settings
-          </button>
-          <div
-            *ngIf="showSettings"
-            id="settings-buttons"
-            class="settings-buttons mt-3"
-          >
-            <button
-              id="add-subject-btn"
-              (click)="addSubject()"
-              class="btn btn-success"
-            >
-              Add Subject
-            </button>
-            <button
-              id="remove-subject-btn"
-              (click)="removeSubject()"
-              class="btn btn-danger"
-            >
-              Remove Subject
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="col-6 mt-5 text-center"> -->
+<!-- <button
+    id="settings-btn"
+    (click)="toggleSettings()"
+    class="btn btn-dark"
+  >
+    <img src="gear.png" height="20px" alt="">
+  </button> -->
+<!-- <div
+    *ngIf="showSettings"
+    id="settings-buttons"
+    class="settings-buttons mt-3"
+  >
+    <button
+      id="add-subject-btn"
+      (click)="addSubject()"
+      class="btn btn-success"
+    >
+     <img src="plus.png" height="20px" alt="">
+    </button>
+    <button
+      id="remove-subject-btn"
+      (click)="removeSubject()"
+      class="btn btn-danger"
+    >
+      Remove Subject
+    </button>
+  </div> -->
+<!-- </div> -->

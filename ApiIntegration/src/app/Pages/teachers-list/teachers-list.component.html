@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Teachers List</h1>
+</div>
+
+<div class="container">
+  <div *ngFor="let teacher of teachers">
+    <ul>
+      <li>{{ teacher.name }}</li>
+      <li>{{ teacher.subject }}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <label for="">Id:</label>
+    <input
+      [(ngModel)]="newTeacher.id"
+      type="number"
+      name="id"
+      id="id"
+    /><br /><br />
+
+    <label for="">Name:</label>
+    <input
+      [(ngModel)]="newTeacher.name"
+      type="text"
+      name="name"
+      id="name"
+    /><br /><br />
+
+    <label for="">Subject:</label>
+    <input
+      [(ngModel)]="newTeacher.subject"
+      type="text"
+      name="subject"
+      id="subject"
+    /><br /><br />
+
+    <button type="submit">Add Teacher</button>
+  </form>
+</div>

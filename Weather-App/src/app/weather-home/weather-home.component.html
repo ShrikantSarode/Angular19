@@ -2,39 +2,11 @@
   <h1>Weather App</h1>
 </div>
 
-<!-- <div class="container box mt-5">
-  <div class="row">
-    <div class="col-6">
-        
-            <div class="row details">
-                
-                <div class="col-2 box1">
-                    temp
-                </div>
-                <div class="col-2 box1">
-                    city    
-                </div>
-            </div>
-            <div class="row">
-                
-                <div class="col-2 box1">
-                    icon
-                </div>
-                <div class="col-2 box1">
-                    descp
-                </div>
-            </div>
-        
-    </div>
-   
-  </div>
-</div> -->
-
 <div class="container border text-center main">
   <div class="row">
     <div class="col-6 border me-5">
       <div class="row text-center">
-        <div class="col-4 mt-3 fs-5">Temp:{{ weatherData.main.temp }}</div>
+        <div class="col-4 mt-3 fs-5">Temp: {{ weatherData?.main?.temp }}</div>
         <svg
           id="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -53,31 +25,39 @@
         </svg>
       </div>
 
-      <div *ngIf="weatherData" id="weather-info" class="row text-center">
-        <div class="col-4 p-4 m-3 fs-5">City:{{ weatherData.name }}</div>
-        <div class="col-4 p-4 m-3 fs-5">Descp:{{ weatherData.weather[0].description }}</div>
+      <div *ngIf="weatherData" class="row text-center">
+        <div class="col-4 p-4 m-3 fs-5">City: {{ weatherData?.name }}</div>
+        <div class="col-4 p-4 m-3 fs-5">
+          Descp: {{ weatherData?.weather[0]?.description }}
+        </div>
       </div>
     </div>
-    <!--  -->
 
-    <div class="" id="box2" class="col-5 border">
-      <p class="p-4 m-3 fs-5" id="humidity">Humidity:{{ weatherData.main.humidity }}</p>
-      <p class="p-4 m-3 fs-5" id="wind">Wind Speed:{{ weatherData.wind.speed }}</p>
+    <div class="col-5 border">
+      <p class="p-4 m-3 fs-5" id="humidity">
+        Humidity: {{ weatherData?.main?.humidity }}
+      </p>
+      <p class="p-4 m-3 fs-5" id="wind">
+        Wind Speed: {{ weatherData?.wind?.speed }}
+      </p>
       <p class="p-4 m-3 fs-5" id="fahrenheit">
-        Fahrenheit: {{ ((weatherData.main.temp * 9) / 5 + 32 )}}
-        <sup>o</sup> F
+        Fahrenheit: {{ (weatherData?.main?.temp * 9) / 5 + 32 }} <sup>o</sup> F
       </p>
 
       <input
         class="text-center"
         type="text"
-        name=""
         id="inp1"
         placeholder="Enter City Name"
-        value="Pune"
+        [(ngModel)]="cityName"
       />
-      <button class="m-3 btn btn-dark " style="width: 150px;" id="btn" (click)="checkWeather()">
-        <svg 
+      <button
+        class="m-3 btn btn-dark"
+        style="width: 150px"
+        id="btn"
+        (click)="checkWeather(cityName)"
+      >
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
@@ -90,7 +70,6 @@
           />
         </svg>
       </button>
-      <i></i>
     </div>
   </div>
 </div>

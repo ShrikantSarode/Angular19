@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from './weather-service.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-weather-home',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './weather-home.component.html',
   styleUrl: './weather-home.component.css',
 })
 export class WeatherHomeComponent {
-  cityName: string = 'Pune';
+  cityName: string = '';
   weatherData: any;
-  iconUrl: string = '';
+
   currentDate: string = '';
   loading: boolean = false;
   error: string = '';
@@ -23,17 +24,24 @@ export class WeatherHomeComponent {
 
   constructor(private http: HttpClient) {}
 
-  checkWeather(): void {
-    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.cityName}&appid=${this.API_key}`;
+  checkWeather(cityName1: string): void {
+    if (!cityName1) {
+      console.log('Please enter a city name.');
+
+      return;
+    }
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${cityName1}&appid=${this.API_key}`;
 
     this.http.get(url).subscribe(
       (data: any) => {
         // console.log(data);
-        
+
         this.weatherData = data;
         console.log(this.weatherData);
-        
-        this.currentDate = this.currentDate;
+
+        this.currentDate = new Date().toLocaleDateString();
+
         document
           .getElementById('weather-info')
           ?.style.setProperty('display', 'block');

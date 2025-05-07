@@ -1,18 +1,79 @@
-.box{
-    border: 1px solid;
-    height: 300px;
-    width: 30%;
-    margin: auto;
-}
-.box1{
-    border: 1px solid;
-    height: 10px;
-    width: 100%;
-    margin: 12px;
-    
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
 }
 
-.details{
-    display: flex;
-    justify-content: center;
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Weather Info Styles */
+.main {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-6 {
+  flex: 1;
+  padding: 20px;
+}
+
+.col-4 {
+  flex: 1;
+  padding: 10px;
+}
+
+.border {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Button Styles */
+.btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+/* Input Styles */
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* SVG Icon Styles */
+svg {
+  margin-top: 20px;
 }

@@ -34,7 +34,7 @@ export class Mychart3Component implements OnInit, AfterViewInit {
         },
         data: [
           {
-            value: 50,
+            value: 70,
             name: 'SCORE'
           }
         ]

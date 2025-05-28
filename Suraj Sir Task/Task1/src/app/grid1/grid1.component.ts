@@ -26,6 +26,9 @@ import {
 } from 'ag-grid-community';
 import * as echarts from 'echarts';
 import { Grid1 } from './grid1';
+// import 'ag-grid-community/styles/ag-theme-material.css'
+// import 'ag-grid-community/styles/ag-theme-quartz.css'
+// import 'ag-grid-community/styles/ag-grid.css'
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
@@ -42,6 +45,9 @@ ModuleRegistry.registerModules([
 export class Grid1Component implements AfterViewInit, OnInit {
   private gridApi!: GridApi<Grid1>;
 
+  // paginationPageSize=2;
+
+ 
   columnDefs: ColDef[] = [
     { field: 'tagName', headerName: 'Tag Name', filter: 'agTextColumnFilter' },
     { field: 'value', headerName: 'Value', filter: 'agNumberColumnFilter' },
@@ -74,6 +80,7 @@ export class Grid1Component implements AfterViewInit, OnInit {
     flex: 1,
     minWidth: 150,
     filter: true,
+    floatingFilter:true,
     sortable: true,
     resizable: true,
   };
@@ -225,9 +232,37 @@ export class Grid1Component implements AfterViewInit, OnInit {
   }
 
   addSubject() {
-    const newSubjectName = prompt('Enter the name of the new subject:');
-    if (newSubjectName) {
-      this.profileForm.addControl(newSubjectName, new FormControl());
+    const tagName = prompt('Enter the Tag Name:');
+    if (tagName) {
+      const unit = prompt('Enter the Unit:');
+      if (unit) {
+        const controlName = tagName;
+
+        this.profileForm.addControl(controlName, new FormControl(0));
+
+        const newRow: Grid1 = {
+          tagName: controlName,
+          value: 0,
+          unit,
+          quantity: 'Unknown',
+          lastUpdate: new Date().toLocaleString(),
+          dataType: 'float',
+          writable: 'true',
+          dataProvider: 'User',
+          dataSource: 'Manual',
+        };
+
+        if (this.gridApi) {
+          console.log('Adding row');
+          this.gridApi.applyTransaction({ add: [newRow] });
+        } else {
+          console.log('Grid not added');
+        }
+
+        this.rowData.push(newRow);
+
+        this.onSubmit();
+      }
     }
   }
 

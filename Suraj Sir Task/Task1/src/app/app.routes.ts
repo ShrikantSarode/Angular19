@@ -22,4 +22,8 @@ export const routes: Routes = [
     path: 'grid1',
     component: Grid1Component,
   },
+  // {
+  //   path: 'grid2',
+  //   component: Grid2Component,
+  // },
 ];

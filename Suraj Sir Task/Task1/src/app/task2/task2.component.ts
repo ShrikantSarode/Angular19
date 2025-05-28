@@ -8,6 +8,7 @@ import {
 import { RouterModule, RouterOutlet } from '@angular/router';
 import * as echarts from 'echarts';
 
+
 @Component({
   selector: 'app-task2',
   imports: [RouterModule],

@@ -1,0 +1,32 @@
+<h1 class="text-center">Grids</h1>
+
+<!-- 1st ex -->
+<div class="container mt-5">
+  <h2 class="text-start ms-5">Grids-1:Moveable columns</h2>
+  <!-- The AG Grid component -->
+  <ag-grid-angular
+    style="width: 100%; height: 300px"
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+  />
+</div>
+
+<!-- 2nd ex -->
+<div class="container mb-5">
+  <h2 class="text-start ms-5 mt-5">Grids-2:Pagination</h2>
+  <app-pagination></app-pagination>
+</div>
+
+<!-- 3rd ex -->
+
+<div class="container">
+  <h2 class="text-start ms-5 mt-5">Grids-3:Cell , Row and Theme Styling</h2>
+  <app-cell-style-row-style></app-cell-style-row-style>
+</div>
+
+<!-- 4th ex -->
+
+<div class="container">
+  <h2 class="text-start ms-5 mt-5">Grids-4:Sidebar</h2>
+  <app-sidebar></app-sidebar>
+</div>

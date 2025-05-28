@@ -1,0 +1,101 @@
+<div class="container-fluid mt-5">
+  <ag-grid-angular
+    style="width: 100%; height: 150px"
+    class="ag-theme-alpine"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</div>
+
+<div id="marks-calculator" class="container-fluid">
+  <h1 class="text-center mt-4">Grid Data Chart</h1>
+</div>
+
+<div id="marks-form" class="container border mt-5 p-4">
+  <div class="row mb-3">
+    <div class="col d-flex justify-content-start">
+      <button
+        id="add-subject-btn"
+        (click)="addSubject()"
+        class="btn btn-success"
+        title="Add Subject"
+      >
+        <img src="plus.png" height="30px" width="30px" alt="Add" />
+      </button>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <button
+        id="settings-btn"
+        (click)="toggleSettings()"
+        class="btn btn-dark"
+        title="Settings"
+      >
+        <img src="gear.png" height="30px" width="30px" alt="Settings" />
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+
+     <!-- Chart Column -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div
+        id="chartContainer"
+        #chartContainer
+        style="width: 100%; height: 400px"
+      ></div>
+    </div>
+
+    <!-- Settings Form Column -->
+    <div class="col-md-6 d-flex justify-content-end">
+      
+      <ng-container *ngIf="showSettings">
+        <form
+          [formGroup]="profileForm"
+          (ngSubmit)="onSubmit()"
+          id="settings-buttons"
+          class="settings-buttons mt-3"
+        >
+          <!-- Fields inside form -->
+          <div
+            *ngFor="let control of profileForm.controls | keyvalue; index as i"
+            class="p-2"
+          >
+            <label>{{ control.key }}</label
+            ><br />
+            <input
+              class="p-2"
+              placeholder="Enter {{ control.key }} marks"
+              type="text"
+              [formControlName]="control.key"
+            />
+
+           <button
+        type="button"
+        (click)="removeSubject(i)"
+        class="btn btn-danger"
+      >
+        <img src="recycle-bin.png" height="20px" alt="Remove" />
+      </button> 
+          </div>
+
+          <div class="mb-5">
+            <button type="submit" class="btn btn-success p-3 mt-4">Save</button>
+            <button
+              type="button"
+              (click)="showSettings = false"
+              class="btn btn-danger p-3 mt-4 ms-4"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </ng-container>
+    </div>
+
+   
+  </div>
+</div>

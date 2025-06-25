@@ -1,0 +1,34 @@
+{
+  "seller": [
+    {
+      "id": "3fcf",
+      "name": "Shrikant",
+      "email": "example@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "96ed",
+      "name": "Shri",
+      "password": "123",
+      "email": "Shrikant.Sarode@sensiaglobal.com"
+    },
+    {
+      "id": "0a72",
+      "name": "Amit",
+      "password": "123",
+      "email": "Amit@gmail.com"
+    },
+    {
+      "id": "8dce",
+      "name": "AAkash",
+      "password": "123",
+      "email": "Akash@gmail.com"
+    },
+    {
+      "id": "0c2b",
+      "name": "Harish",
+      "password": "123",
+      "email": "harish@gmail.com"
+    }
+  ]
+}

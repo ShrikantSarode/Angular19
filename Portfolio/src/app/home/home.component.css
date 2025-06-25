@@ -1,0 +1,64 @@
+body {
+  background-color: #121212 !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.home {
+  margin-top: 100px !important;
+}
+
+#typewriter {
+  margin-top: 100px !important;
+  color: #f9c74f;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hero-text {
+  color: #00bfa6;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.img-container {
+  width: 400px;
+  margin: auto;
+}
+
+.myPhoto {
+  border-radius: 32px;
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 191, 166, 0.3);
+}
+
+.myPhoto:hover {
+  transform: rotate(-10deg) scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 191, 166, 0.5);
+}
+
+.btn-home {
+  background-color: #00bfa6;
+  color: #ffffff;
+  margin-left: 200px !important;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #008e7a;
+  border: 1px dashed #f9c74f;
+  color: #ffffff;
+}

@@ -1,0 +1,54 @@
+/* Navbar Styling */
+.nav {
+  background-color: #121212;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.nav li a:hover,
+.nav li a.active {
+  color: #f9c74f;
+}
+
+.nav li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f9c74f;
+  transition: width 0.3s ease;
+}
+
+.nav li a:hover::after,
+.nav li a.active::after {
+  width: 100%;
+}
+
+.logo {
+  color: #00bfa6;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* Section Spacing */
+section {
+  padding: 80px 0;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}

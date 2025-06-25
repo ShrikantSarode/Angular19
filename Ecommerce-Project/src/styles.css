@@ -1,0 +1,31 @@
+body{
+    font-family: sans-serif;
+}
+
+.container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+form{
+    text-align: center;
+    flex-direction: column;
+}
+
+.form-input{
+    display: flex;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    padding-left: 15px;
+    margin: auto;
+    margin-bottom: 25px;
+    height: 35px;
+    width: 40%;
+    outline: none;
+}
+
+.form-button{
+    padding: 15px;
+    border: 1px solid blueviolet;
+
+}

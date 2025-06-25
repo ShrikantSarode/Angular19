@@ -1,0 +1,92 @@
+.project-head {
+  color: teal;
+}
+
+.card {
+  /* background-color: rgb(170, 124, 0) !important; */
+  color: aliceblue;
+}
+
+.card-container{
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Project Heading */
+.project-head {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #9b711e;
+  font-weight: bold;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Card Container */
+.card-container {
+  padding: 0 15px;
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Staggered Animation Delay */
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+
+/* Hover Effect */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image */
+.card-img-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Card Content */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Responsive Column Centering */
+.row-cols-md-3 > .col {
+  display: flex;
+  justify-content: center;
+}

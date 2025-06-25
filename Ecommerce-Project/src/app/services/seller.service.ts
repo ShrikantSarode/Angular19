@@ -32,7 +32,7 @@ export class SellerService {
   reloadSeller() {
     if (localStorage.getItem('seller')) {
       this.isSellerLoggedIn.next(true);
-      // this.router.navigate(['seller-home']);
+      this.router.navigate(['seller-home']);
     }
   }
 

@@ -30,5 +30,16 @@
       "password": "123",
       "email": "harish@gmail.com"
     }
+  ],
+  "products": [
+    {
+      "name": "Lenovo",
+      "price": "500000",
+      "category": "laptop",
+      "color": "silver",
+      "description": "gaming Laptop\n",
+      "image": "https://www.bing.com/th?id=OPAC.b2lwddSPbwibAw474C474&o=5&pid=21.1&w=148&h=148&rs=1&qlt=100&dpr=1&bw=6&bc=FFFFFF",
+      "id": "88d0"
+    }
   ]
 }

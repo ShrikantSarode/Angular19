@@ -33,13 +33,40 @@
   ],
   "products": [
     {
-      "name": "Lenovo",
-      "price": "500000",
-      "category": "laptop",
-      "color": "silver",
-      "description": "gaming Laptop\n",
-      "image": "https://www.bing.com/th?id=OPAC.b2lwddSPbwibAw474C474&o=5&pid=21.1&w=148&h=148&rs=1&qlt=100&dpr=1&bw=6&bc=FFFFFF",
-      "id": "88d0"
+      "name": "Iphone 16",
+      "price": "80000",
+      "category": "mobile",
+      "color": "black",
+      "description": "iphone16 new model",
+      "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-black?wid=5120&hei=2880&fmt=webp&qlt=70&.v=UXp1U3VDY3IyR1hNdHZwdFdOLzg1V0tFK1lhSCtYSGRqMUdhR284NTN4OUFsUUpuUVQ3cUdJUXc0NW5mTVpFdE9MekhWSGZtV1pvV240QzNuTk80VXhseHVZcEw1SmhqcElaQkJMTm9FMzlKVGsyNDdnTWJxWHVYZ20wTDc3dFA&traceId=1",
+      "id": "a46a"
+    },
+    {
+      "name": "Oneplus 13s",
+      "price": "50000",
+      "category": "mobile",
+      "color": "green",
+      "description": "Latest mobile",
+      "image": "https://m.media-amazon.com/images/I/61BTIyv+XdL._SX679_.jpg",
+      "id": "748b"
+    },
+    {
+      "id": "70cf",
+      "name": "Pixcel 9 pro",
+      "price": "80000",
+      "category": "mobile",
+      "color": "grey",
+      "description": "google phone",
+      "image": "https://img5.gadgetsnow.com/gd/images/products/additional/large/G558598_View_3/mobiles/smartphones/google-pixel-9-pro-xl-5g-256-gb-hazel-16-gb-ram-.jpg"
+    },
+    {
+      "id": "0d68",
+      "name": "Acer",
+      "price": "875454",
+      "category": "Laptop",
+      "color": "green",
+      "description": "laptop ",
+      "image": ""
     }
   ]
 }

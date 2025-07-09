@@ -15,6 +15,7 @@
         name="name"
         id=""
         placeholder="Enter Name"
+        required="true"
       />
       <input
         class="form-input"
@@ -23,6 +24,7 @@
         name="password"
         id=""
         placeholder="Enter Password"
+        required="true"
       />
       <input
         class="form-input"
@@ -31,8 +33,11 @@
         name="email"
         id=""
         placeholder="Enter Email"
+        required="true"
       />
-      <button class="form-button">Sign Up</button>
+      <button class="form-button" [disabled]="!sellerSignUp.valid">
+        Sign Up
+      </button>
     </form>
     <a (click)="openLogin()">Already have account? Click here</a>
   </div>
@@ -40,7 +45,7 @@
 
   <div class="signup">
     <h1>Seller Log-In</h1>
-    <p class="error-p">{{authError}}</p>
+    <p class="error-p">{{ authError }}</p>
     <form
       #sellerLogin="ngForm"
       (ngSubmit)="login(sellerLogin.value)"

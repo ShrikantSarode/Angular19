@@ -26,6 +26,7 @@ export class SellerService {
       localStorage.setItem('sellerToken', 'true');
       alert('SignUp Successful');
       this.router.navigate(['/']);
+      this.router.navigate(['seller-home']);
     }
   }
 

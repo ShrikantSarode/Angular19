@@ -1,0 +1,15 @@
+<h1>All articles</h1>
+
+<button><a routerLink="/add-article">Add Article</a></button>
+
+<ul *ngFor="let article of articles">
+  <li>{{ article.name }}</li>
+  <li>{{ article.category }}</li>
+  <li>{{ article.createName }}</li>
+  <li>{{ article.id }}</li>
+</ul>
+ 
+
+ 
+
+ 

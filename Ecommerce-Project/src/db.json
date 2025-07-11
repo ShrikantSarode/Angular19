@@ -57,15 +57,6 @@
   ],
   "products": [
     {
-      "name": "Iphone 16",
-      "price": "80000",
-      "category": "mobile",
-      "color": "black",
-      "description": "iphone16 new model",
-      "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-black?wid=5120&hei=2880&fmt=webp&qlt=70&.v=UXp1U3VDY3IyR1hNdHZwdFdOLzg1V0tFK1lhSCtYSGRqMUdhR284NTN4OUFsUUpuUVQ3cUdJUXc0NW5mTVpFdE9MekhWSGZtV1pvV240QzNuTk80VXhseHVZcEw1SmhqcElaQkJMTm9FMzlKVGsyNDdnTWJxWHVYZ20wTDc3dFA&traceId=1",
-      "id": "a46a"
-    },
-    {
       "name": "Oneplus 13s",
       "price": "50000",
       "category": "mobile",
@@ -90,6 +81,15 @@
       "category": "Laptop",
       "color": "green",
       "description": "laptop ",
+      "image": ""
+    },
+    {
+      "id": "1ba8",
+      "name": "Jack",
+      "price": "80000",
+      "category": "mobile",
+      "color": "green",
+      "description": "",
       "image": ""
     }
   ]

@@ -7,14 +7,11 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, FormsModule, AsyncPipe,RouterLink],
+  imports: [CommonModule, FormsModule, AsyncPipe, RouterLink],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-btnClick() {
-alert("Btn clicked")
-}
   location$: Observable<any[]> = new Observable<any[]>();
   pickupId: string = '';
   destinationId: string = '';
@@ -24,9 +21,9 @@ alert("Btn clicked")
   masterSrv = inject(MasterService);
 
   searchObj: any = {
-    fromLocation: '',   
-    toLocation: '',      
-    travelDate: '',      
+    fromLocation: '',
+    toLocation: '',
+    travelDate: '',
   };
 
   ngOnInit(): void {
@@ -43,10 +40,9 @@ alert("Btn clicked")
       console.error('Please fill in all fields.');
       return;
     }
-    
-   
+
     this.masterSrv
-      .searchBuses(Number(fromLocation), Number(toLocation), travelDate)   
+      .searchBuses(Number(fromLocation), Number(toLocation), travelDate)
       .subscribe({
         next: (res: any) => {
           this.busList = res;
@@ -55,5 +51,9 @@ alert("Btn clicked")
           console.error('Error fetching bus list:', err);
         },
       });
+  }
+
+  btnClick() {
+    alert('Btn clicked');
   }
 }

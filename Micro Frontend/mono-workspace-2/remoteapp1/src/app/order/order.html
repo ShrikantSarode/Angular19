@@ -1,0 +1,7 @@
+<h1>This is Remote App 1 mfe-1</h1>
+
+<div *ngFor="let product of products"><p>Name:{{product.name}}</p></div>
+
+@for (item of products; track $index) {
+    <h2>Name:{{item.name}}</h2>
+}

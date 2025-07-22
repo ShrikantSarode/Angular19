@@ -57,15 +57,6 @@
   ],
   "products": [
     {
-      "name": "Oneplus 13s",
-      "price": "50000",
-      "category": "mobile",
-      "color": "green",
-      "description": "Latest mobile",
-      "image": "https://m.media-amazon.com/images/I/61BTIyv+XdL._SX679_.jpg",
-      "id": "748b"
-    },
-    {
       "id": "70cf",
       "name": "Pixcel 9 pro",
       "price": "80000",

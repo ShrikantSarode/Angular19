@@ -3,11 +3,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Article } from './interface/model';
 import { ArticleService } from './article.service';
 import { CommonModule } from '@angular/common';
-import { AddArticleComponent } from "./add-article/add-article.component";
+import { AddArticleComponent } from './add-article/add-article.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -26,6 +26,16 @@ export class AppComponent implements OnInit {
     this.articleService.ArticleList().subscribe((data) => {
       this.articles = data;
       console.log(data);
+    });
+  }
+
+  deleteArticle(id: number) {
+    console.log('id:', id);
+    this.articleService.deleteArticle(id).subscribe((data) => {
+      this.getArticleList()
+      if (data) {
+        console.log('Deleted successfully!!');
+      }
     });
   }
 }

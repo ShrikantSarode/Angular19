@@ -12,21 +12,20 @@ import { Router } from '@angular/router';
 })
 export class SellerAddProductComponent {
   addProductMessage: string | undefined;
-  constructor(private product: ProductService,private router:Router) {}
+  constructor(private product: ProductService, private router: Router) {}
 
   ngOnInit(): void {}
 
   submit(data: product) {
     this.product.addProduct(data).subscribe((result) => {
       console.log(result);
-      if(result){
-        this.addProductMessage="Product Added successfully!!"
+      if (result) {
+        this.addProductMessage = 'Product Added successfully!!';
       }
+      setTimeout(() => {
+        this.addProductMessage = undefined;
+      }, 3000);
+      this.router.navigate(['seller-home']);
     });
-
-    setTimeout(() => {
-      this.addProductMessage=undefined
-    }, 3000);
-    this.router.navigate(['seller-home'])
   }
 }

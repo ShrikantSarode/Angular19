@@ -16,4 +16,8 @@ export class ArticleService {
   addArticle(data: Article): Observable<Article> {
     return this.http.post<Article>('http://localhost:8085/article/add', data);
   }
+
+  deleteArticle(id: number) {
+    return this.http.delete(`http://localhost:8085/article/delete/${id}`);
+  }
 }

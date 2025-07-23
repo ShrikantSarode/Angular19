@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { Home } from './home/home';
 
 export const routes: Routes = [
-     { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: Home },
   {
     path: 'mfe1',
@@ -17,9 +17,9 @@ export const routes: Routes = [
         .then((m) => m.OrderModule)
         .catch((err) => console.error(err));
     },
-},
+  },
 
-    {
+  {
     path: 'mfe2',
     loadChildren: () => {
       return loadRemoteModule({

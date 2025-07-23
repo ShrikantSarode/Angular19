@@ -1,0 +1,29 @@
+import { Routes } from '@angular/router';
+import { Home } from './home/home';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: Home,
+  },
+
+  {
+    path: 'mfe1',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4100/remoteEntry.js',
+
+        exposedModule: './LoginModule',
+      })
+        .then((m) => m.LoginModule)
+        .catch((err) => console.error(err));
+    },
+  },
+];

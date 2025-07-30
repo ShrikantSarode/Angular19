@@ -26,4 +26,19 @@ export const routes: Routes = [
         .catch((err) => console.error(err));
     },
   },
+  {
+    path: 'mfe2',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4500/remoteEntry.js',
+
+        exposedModule: './ArticleCatalogueModule',
+      })
+        .then((m) => m.ArticleCatalogueModule)
+        .catch((err) => console.error(err));
+    },
+    
+  },
+  
 ];

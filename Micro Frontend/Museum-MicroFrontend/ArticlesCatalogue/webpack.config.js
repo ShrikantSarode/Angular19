@@ -2,11 +2,11 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 
 module.exports = withModuleFederationPlugin({
 
-  remotes: {
-    // login
-    "mfe1": "http://localhost:4100/remoteEntry.js",   
-    // articlesCatalog
-    "mfe2": "http://localhost:4500/remoteEntry.js", 
+  name: 'ArticlesCatalogue',
+
+  exposes: {
+    './ArticleCatalogueModule': './src/app/article-catalogue/article-catalogue-module.ts',
+    
   },
 
   shared: {

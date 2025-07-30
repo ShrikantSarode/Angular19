@@ -1,0 +1,93 @@
+<div class="Catalogue mt-5 mb-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <span class="fs-1">Articles Catalogue</span>
+      </div>
+
+      <div class="col-6 d-flex justify-content-end">
+        <span>Hey User!</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-6">
+        <h3>The Art Hunt</h3>
+      </div>
+      <div class="col-6 d-flex justify-content-end mb-5">
+        <button class="btn btn-success" (click)="onCheckedOut()">CheckOut</button>
+      </div>
+    </div>
+    <!-- paragraph -->
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis in nam
+      officiis esse numquam provident, veritatis dignissimos dolor recusandae,
+      explicabo, sapiente vitae fuga est dolorum commodi ipsum autem
+      perspiciatis maxime quibusdam odio deleniti. Exercitationem, voluptate!
+      Deserunt laboriosam quis aliquam neque.
+    </p>
+    <!-- heading -->
+    <h3 class="text-center">Artworks</h3>
+    <!-- cards -->
+
+    <div class="art-list">
+      <div class="art-items container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12  p-4">
+            <div
+              class="art-details mt-3 d-flex justify-content-start align-items-center"
+            >
+              <table class="table table-bordered table-dark table-striped text-center">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let art of artItems" >
+                    <td>
+                      <img
+                        [src]="art.image"
+                        alt="{{ art.artName }}"
+                        width="200px" 
+                      />
+                    </td>
+                    <td>{{ art.artName }}</td>
+                    <td>{{ art.price }}</td>
+                    <td>{{ art.description }}</td>
+                    <td>
+                      <span class="art-quantity mt-3">
+                        <button
+                          class="btn btn-danger m-2"
+                          *ngIf="art.quantity > 0"
+                          (click)="decrementQuantity(art)"
+                        >
+                          -
+                        </button>
+                        <span class="art-quantity p-3">{{ art.quantity }}</span>
+                        <button
+                          class="btn btn-success m-2"
+                          (click)="incrementQuantity(art)"
+                        >
+                          +
+                        </button>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

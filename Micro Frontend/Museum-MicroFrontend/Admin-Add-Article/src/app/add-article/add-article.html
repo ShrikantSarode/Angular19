@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="container text-center mt-5 mb-5">Add Article For Museum</h1>
+    <div class="add-product">
+      <h1 class="text-center">Add New Article</h1>
+      <p class="message-p">{{ addProductMessage }}</p>
+      <form
+        #addArticle="ngForm"
+        class="common-form text-center border p-5"
+        (ngSubmit)="submit(addArticle.value)"
+      >
+        <input
+          class="form-input"
+          type="text"
+          name="artName"
+          id=""
+          placeholder="Enter Article Name"
+          ngModel
+        />
+        <br /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="price"
+          id=""
+          placeholder="Enter Article Price"
+          ngModel
+        />
+        <br /><br />
+
+        <input
+          class="form-input"
+          type="text"
+          name="description"
+          id=""
+          placeholder="Enter Article Description"
+          ngModel
+        />
+
+        <br /><br />
+
+        <input
+          class="form-input"
+          type="text"
+          name="museumId"
+          id=""
+          placeholder="Enter Museum Id"
+          ngModel
+        />
+        <br /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="quantity"
+          id=""
+          placeholder="Enter Article quantity"
+          ngModel
+        />
+        <br /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="image"
+          id=""
+          placeholder="Enter Article Image url"
+          ngModel
+        />
+        <br /><br />
+        <button class="form-button btn btn-success">Add Article</button>
+      </form>
+    </div>
+  </body>
+</html>

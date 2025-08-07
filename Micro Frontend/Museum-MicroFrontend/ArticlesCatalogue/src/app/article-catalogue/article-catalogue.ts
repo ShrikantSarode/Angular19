@@ -56,6 +56,8 @@ export class ArticleCatalogue {
       artItemsList: [...this.artItemsCart],
     };
 
+    this.orderSummary.articleList = this.artItemsCart;
+
     this.router.navigate(['mfe2/orderSummary'], {
       queryParams: { data: JSON.stringify(this.orderSummary) },
     });

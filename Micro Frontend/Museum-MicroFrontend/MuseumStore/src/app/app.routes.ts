@@ -20,9 +20,9 @@ export const routes: Routes = [
         type: 'module',
         remoteEntry: 'http://localhost:4100/remoteEntry.js',
 
-        exposedModule: './LoginModule',
+        exposedModule: './UserLoginModule',
       })
-        .then((m) => m.LoginModule)
+        .then((m) => m.UserLoginModule)
         .catch((err) => console.error(err));
     },
   },

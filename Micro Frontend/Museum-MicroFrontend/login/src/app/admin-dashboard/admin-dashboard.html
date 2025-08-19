@@ -1,0 +1,62 @@
+<div class="container-fluid Dashboard">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/admin/overview">
+              📊 Overview
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/manage-users">
+              👥 Manage Users 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/settings">
+              ⚙️ Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Admin Dashboard</h1>
+      </div>
+
+      <!-- Cards -->
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <h5 class="card-title">Total Users</h5>
+              <p class="card-text">20</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title">Articles</h5>
+              <p class="card-text">87</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-white bg-warning">
+            <div class="card-body">
+              <h5 class="card-title">Pending Requests</h5>
+              <p class="card-text">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+ 

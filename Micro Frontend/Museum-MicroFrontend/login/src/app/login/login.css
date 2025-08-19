@@ -58,3 +58,12 @@ a{
 a:hover{
     color: rgb(0, 151, 55);
 }
+
+.login-head{
+  color: rgb(95, 88, 37);
+}
+
+.login-head:hover{
+  color: rgb(161, 151, 78);
+  cursor: pointer;
+}

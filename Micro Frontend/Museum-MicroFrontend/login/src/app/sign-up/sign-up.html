@@ -1,1 +1,35 @@
-<p>sign-up works!</p>
+<h1 class="text-center signup-head">Sign-Up</h1>
+<div class="container d-flex justify-content-center mt-5 form-bg">
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="signup()" #signupForm="ngForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            [(ngModel)]="formData.username"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

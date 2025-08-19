@@ -1,34 +1,40 @@
+<h1 class="text-center login-head">Login</h1>
 <div class="container d-flex justify-content-center mt-5 form-bg">
   <div class="row">
     <div class="col-12">
-      <form>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
+          <label for="email" class="form-label">Email address</label>
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="email"
+            name="email"
+            [(ngModel)]="formData.email"
+            required
             autofocus
           />
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
-        <form class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="password"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
           />
-        </form>
+        </div>
 
         <button type="submit" class="btn btn-success">Submit</button>
+
         <p class="text-center fs-5 mt-3">
-          <a routerLink="singUp" (click)="toggle()">I have no account-👉 Click here to sign up</a>
+          <a routerLink="signUp" (click)="toggle()">I have no account 👉 Click here to sign up</a>
         </p>
       </form>
     </div>

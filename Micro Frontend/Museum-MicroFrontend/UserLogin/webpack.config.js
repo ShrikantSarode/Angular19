@@ -6,6 +6,7 @@ module.exports = withModuleFederationPlugin({
 
   exposes: {
     './UserLoginModule': './src/app/user-login/user-login-module.ts',
+    './DashboardModule': './src/app/admin-dashboard/admin-dashboard-module.ts',
   },
 
   shared: {

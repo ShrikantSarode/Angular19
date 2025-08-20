@@ -27,6 +27,19 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'mfe1',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4100/remoteEntry.js',
+
+        exposedModule: './DashboardModule',
+      })
+        .then((m) => m.AdminDashboardModule)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
     path: 'mfe2',
     loadChildren: () => {
       return loadRemoteModule({
@@ -38,7 +51,5 @@ export const routes: Routes = [
         .then((m) => m.ArticleCatalogueModule)
         .catch((err) => console.error(err));
     },
-    
   },
-  
 ];

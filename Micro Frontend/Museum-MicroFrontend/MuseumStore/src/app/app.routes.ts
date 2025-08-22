@@ -40,6 +40,19 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'mfe1',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4100/remoteEntry.js',
+
+        exposedModule: './UserOrdersModule',
+      })
+        .then((m) => m.UserOrdersModule)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
     path: 'mfe2',
     loadChildren: () => {
       return loadRemoteModule({

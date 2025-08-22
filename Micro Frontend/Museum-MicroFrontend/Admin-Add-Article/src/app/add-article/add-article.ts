@@ -16,6 +16,9 @@ export class AddArticle {
 
   ngOnInit(): void {}
 
+  
+
+
   submit(data: Article) {
     this.article.addArticle(data).subscribe((result) => {
       if (result) {

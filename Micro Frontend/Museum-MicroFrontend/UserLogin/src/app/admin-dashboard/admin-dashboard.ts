@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AdminDashboard {
   Logout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
+
+    sessionStorage.clear();
+
     this.route.navigate(['/mfe1']);
   }
 

@@ -1,25 +1,59 @@
 <div class="container user-manager-div">
-    <h2 class="text-center">Manage Users</h2>
-<div class="d-flex justify-content-center gap-3 mb-4">
-  <button class="btn btn-primary" routerLink="add">Add New User</button>
+  <h2 class="text-center">Manage Users</h2>
 
-  <!-- <button class="btn btn-success" routerLink="list">List</button> -->
-</div>
-<table class="table table-bordered table-striped">
-  <thead>
-    <td>User Id</td>
-    <td>Username</td>
-    <td>Email</td>
-    <td>Role</td>
-    <td>Action</td>
-  </thead>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><button class="btn btn-success m-2 p-2 border">Update</button>|<button class="btn btn-danger m-2 p-2 border">Delete</button>  </td>
-  </tr>
-</table>
+  <div class="d-flex justify-content-center gap-3 mb-4">
+    <button class="btn btn-primary" routerLink="/mfe1">Add New User</button>
+    <button class="btn btn-success" (click)="loadData()">Load Data</button>
+  </div>
 
+  <!-- Search Input -->
+
+  <div class="mb-3 text-center">
+    <input
+      type="text"
+      class="form-control w-50 mx-auto"
+      placeholder="Search by username or email"
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>User Id</td>
+        <td>Username</td>
+        <td>Email</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let user of filteredUsers
+            | paginate : { itemsPerPage: 5, currentPage: currentPage }
+        "
+      >
+        <td>{{ user.userId }}</td>
+        <td>{{ user.userName }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-success m-2 p-2 border" (click)="updateUser(user.userId)">
+            Update
+          </button>
+          |
+          <button
+            class="btn btn-danger m-2 p-2 border"
+            (click)="deleteUser(user.userId)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <pagination-controls
+    (pageChange)="currentPage = $event"
+  ></pagination-controls>
 </div>

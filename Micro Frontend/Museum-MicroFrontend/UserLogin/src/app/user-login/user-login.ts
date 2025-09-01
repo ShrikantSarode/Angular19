@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserServices } from '../services/user-services';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-user-login',
@@ -59,6 +60,12 @@ export class UserLogin {
 
       // Store token
       localStorage.setItem('token', res.token);
+
+      
+const decoded = jwtDecode<{ userId: number, roles: string[] }>(res.token);
+      localStorage.setItem('userId', decoded.userId.toString());
+      localStorage.setItem('role', decoded.roles[0]);
+
 
       // Role-based navigation
       const role = res.role;

@@ -17,16 +17,19 @@
         <h3>The Art Hunt</h3>
       </div>
       <div class="col-6 d-flex justify-content-end mb-5">
-        <button class="btn btn-success" (click)="onCheckedOut()">CheckOut</button>
+        <button class="btn btn-success" (click)="onCheckedOut()">
+          CheckOut
+        </button>
       </div>
     </div>
     <!-- paragraph -->
     <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis in nam
-      officiis esse numquam provident, veritatis dignissimos dolor recusandae,
-      explicabo, sapiente vitae fuga est dolorum commodi ipsum autem
-      perspiciatis maxime quibusdam odio deleniti. Exercitationem, voluptate!
-      Deserunt laboriosam quis aliquam neque.
+      This piece presents a harmonious blend of color and form, where each
+      element contributes to a balanced visual experience. The composition draws
+      the eye across the canvas with fluid motion, using texture and contrast to
+      evoke depth and emotion. Whether abstract or representational, the artwork
+      invites viewers to interpret its meaning through personal reflection,
+      offering a quiet space for imagination and thought.
     </p>
     <!-- heading -->
     <h3 class="text-center">Artworks</h3>
@@ -35,11 +38,13 @@
     <div class="art-list">
       <div class="art-items container">
         <div class="row d-flex justify-content-center">
-          <div class="col-12  p-4">
+          <div class="col-12 p-4">
             <div
               class="art-details mt-3 d-flex justify-content-start align-items-center"
             >
-              <table class="table table-bordered table-dark table-striped text-center">
+              <table
+                class="table table-bordered table-dark table-striped text-center"
+              >
                 <thead>
                   <tr>
                     <th>Image</th>
@@ -50,12 +55,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let art of artItems" >
+                  <tr *ngFor="let art of artItems">
                     <td>
                       <img
                         [src]="art.image"
                         alt="{{ art.artName }}"
-                        width="200px" 
+                        width="200px"
                       />
                     </td>
                     <td>{{ art.artName }}</td>
@@ -82,8 +87,6 @@
                   </tr>
                 </tbody>
               </table>
-
-            
             </div>
           </div>
         </div>

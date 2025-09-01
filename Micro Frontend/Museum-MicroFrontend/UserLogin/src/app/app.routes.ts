@@ -33,4 +33,11 @@ export const routes: Routes = [
         (m) => m.UserOrdersModule
       ),
   },
+  {
+    path: 'update-user',
+    loadChildren: () =>
+      import('./update-user/update-user-module').then(
+        (m) => m.UpdateUserModule
+      ),
+  },
 ];

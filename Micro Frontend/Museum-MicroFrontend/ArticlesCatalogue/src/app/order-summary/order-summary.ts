@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDto } from '../models/order-dto';
 import { OrderService } from '../service/order-service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../service/auth-service';
 
 @Component({
   selector: 'app-order-summary',
@@ -12,6 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class OrderSummary implements OnInit {
   obj: any;
+  orders: OrderDto[] = [];
+
   orderSummarys?: OrderDto;
   total: number | undefined = 0;
   showDialog: boolean = false;
@@ -19,14 +22,18 @@ export class OrderSummary implements OnInit {
   constructor(
     private orderService: OrderService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    const userId = this.authService.getUserId();
+ 
+
     const data = this.route.snapshot.queryParamMap.get('data');
     if (data) {
       this.obj = JSON.parse(data);
-      this.obj.userId = 1;
+      this.obj.userId = userId;
       this.orderSummarys = this.obj;
 
       if (this.orderSummarys?.articleList?.length) {
@@ -48,6 +55,8 @@ export class OrderSummary implements OnInit {
           quantity: article.quantity,
           totalPrice: this.total,
         };
+        console.log('Sending order payload:', payload);
+ 
 
         this.orderService.savedOrder(payload).subscribe(
           (res: any) => {

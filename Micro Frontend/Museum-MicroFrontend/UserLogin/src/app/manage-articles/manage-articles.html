@@ -1,0 +1,57 @@
+<div class="Catalogue mt-5 mb-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <span class="fs-1">Articles Catalogue</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- heading -->
+  <h3 class="text-center">Artworks</h3>
+  <button class="btn btn-success text-center w-100" routerLink="/mfe1">Add Arts</button>
+  <!-- cards -->
+
+  <div class="art-list">
+    <div class="art-items container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 p-4">
+          <div
+            class="art-details mt-3 d-flex justify-content-start align-items-center"
+          >
+            <table
+              class="table table-bordered table-dark table-striped text-center"
+            >
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let art of artItems">
+                  <td>
+                    <img
+                      [src]="art.image"
+                      alt="{{ art.artName }}"
+                      width="50px"
+                    />
+                  </td>
+                  <td>{{ art.artName }}</td>
+                  <td>{{ art.price }}</td>
+                  <td>{{ art.description }}</td>
+                  <td>
+                    <button class="btn btn-warning me-3 mt-4">Update</button><button class="btn btn-danger mt-4">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

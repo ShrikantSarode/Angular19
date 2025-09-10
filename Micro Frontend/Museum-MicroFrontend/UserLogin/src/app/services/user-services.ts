@@ -12,9 +12,26 @@ export class UserServices {
 
   private baseUrl = 'http://localhost:9094/orders';
   private baseUrlUser = 'http://localhost:9093/user';
+  private apiUrlArt = 'http://localhost:9092/artCatalogue';
 
   getOrdersByUserId(userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.baseUrl}/user/${userId}`);
+  }
+
+  getOrderCount(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+  }
+
+   getUserCount(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrlUser}/count`);
+  }
+
+  getArtCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrlArt}/count`);
+  }
+
+   getCatalog(){
+    return this.http.get(`${this.apiUrlArt}/allArticles`);
   }
 
   signUp(user: any) {

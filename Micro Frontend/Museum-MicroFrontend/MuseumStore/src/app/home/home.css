@@ -30,6 +30,133 @@ p {
   border-radius: 40px;
   margin: 20px;
 }
-.inner-head{
-    text-decoration: underline;
+.inner-head {
+  text-decoration: underline;
+}
+
+/* ================================
+   Vermont Museum of Art – Modern UI
+   ================================ */
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+ 
+
+/* Container spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Section rows */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Columns */
+.col-6 {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+/* Images */
+.col-6 img,
+.collection-img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col-6 img:hover,
+.collection-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Inner headings */
+.inner-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.inner-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  background: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Collection section */
+.inner-head {
+  margin: 3rem 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.collection-img {
+  max-width: 350px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+/* Responsive grid for collection */
+.row.text-center {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

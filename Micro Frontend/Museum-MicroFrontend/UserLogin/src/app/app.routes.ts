@@ -40,4 +40,11 @@ export const routes: Routes = [
         (m) => m.UpdateUserModule
       ),
   },
+  {
+    path: 'manage-articles',
+    loadChildren: () =>
+      import('./manage-articles/manage-articles-module').then(
+        (m) => m.ManageArticlesModule
+      ),
+  },
 ];

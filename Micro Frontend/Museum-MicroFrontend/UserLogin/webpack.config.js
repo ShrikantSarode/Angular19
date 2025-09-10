@@ -12,6 +12,7 @@ module.exports = withModuleFederationPlugin({
     "./ManageUsersModule": "./src/app/manage-user/manage-user-module.ts",
     "./UserOrdersModule": "./src/app/user-orders/user-orders-module.ts",
     "./UpdateUserModule": "./src/app/update-user/update-user-module.ts",
+    "./ManageArticlesModule": "./src/app/manage-articles/manage-articles-module.ts",
   },
 
   shared: {

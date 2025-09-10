@@ -1,25 +1,25 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { CatalogService } from '../service/catalog-service';
+import { UserServices } from '../services/user-services';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-article-catalogue',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './article-catalogue.html',
-  styleUrls: ['./article-catalogue.css'],
+  selector: 'app-manage-articles',
+  imports: [CommonModule,RouterLink],
+  templateUrl: './manage-articles.html',
+  styleUrl: './manage-articles.css'
 })
-export class ArticleCatalogue {
-  quantity: number = 0;
+export class ManageArticles {
+
+    quantity: number = 0;
   artItems: any[] = [];
   artItemsCart: any[] = [];
   orderSummary: any = {};
 
-  constructor(private catalogService: CatalogService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private Services: UserServices, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.catalogService.getCatalog().subscribe((res: any) => {
+    this.Services.getCatalog().subscribe((res: any) => {
       this.artItems = res.map((item: any) => ({ ...item, quantity: 0 }));
       this.cdr.detectChanges();
       console.log(this.artItems);
@@ -52,15 +52,4 @@ export class ArticleCatalogue {
     }
   }
 
-  onCheckedOut() {
-    this.orderSummary = {
-      artItemsList: [...this.artItemsCart],
-    };
-
-    this.orderSummary.articleList = this.artItemsCart;
-
-    this.router.navigate(['mfe2/orderSummary'], {
-      queryParams: { data: JSON.stringify(this.orderSummary) },
-    });
-  }
 }

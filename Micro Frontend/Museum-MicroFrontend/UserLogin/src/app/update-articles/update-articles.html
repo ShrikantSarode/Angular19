@@ -1,0 +1,113 @@
+<h1 class="text-center mt-5 mb-4">Update Article</h1>
+
+<div class="update-article">
+  <p class="message-p">{{ updateArticleMessage }}</p>
+
+  <form
+    #updateArticle="ngForm"
+    (ngSubmit)="update(updateArticle.value)"
+    novalidate
+  >
+    <!-- Hidden field for Article ID -->
+    <input
+      type="hidden"
+      name="id"
+      [value]="selectedArticle.articleId"
+      ngModel
+    />
+
+    <label for="artName">Art Name</label>
+    <input
+      class="form-input"
+      type="text"
+      name="artName"
+      placeholder="Enter Article Name"
+      [(ngModel)]="selectedArticle.artName"
+      required
+    />
+
+    <label for="price">Price</label>
+    <input
+      class="form-input"
+      type="number"
+      name="price"
+      placeholder="Enter Article Price"
+      [(ngModel)]="selectedArticle.price"
+      required
+      min="0"
+      step="1"
+    />
+
+    <label for="description">Description</label>
+    <textarea
+      class="form-input"
+      name="description"
+      placeholder="Enter Article Description"
+      [(ngModel)]="selectedArticle.description"
+      rows="3"
+    ></textarea>
+
+    <label for="museumId">Museum ID</label>
+    <input
+      class="form-input"
+      type="number"
+      name="museumId"
+      placeholder="Enter Museum ID"
+      [(ngModel)]="selectedArticle.museumId"
+      required
+      min="1"
+      step="1"
+    />
+
+    <label for="quantity">Quantity</label>
+    <input
+      class="form-input"
+      type="number"
+      name="quantity"
+      placeholder="Enter Article Quantity"
+      [(ngModel)]="selectedArticle.quantity"
+      required
+      min="0"
+      step="1"
+    />
+
+    <label for="image">Image</label>
+    <input
+      class="form-input"
+      type="text"
+      name="image"
+      placeholder="Enter Article Image URL"
+      [(ngModel)]="selectedArticle.image"
+      required
+    />
+
+    <label for="remainingStock">Stock</label>
+    <input
+      class="form-input"
+      type="number"
+      name="remainingStock"
+      placeholder="Enter Remaining Stock"
+      [(ngModel)]="selectedArticle.remainingStock"
+      min="0"
+      step="1"
+      required
+    />
+
+    <div class="text-center mt-3">
+      <img
+        *ngIf="selectedArticle.image"
+        [src]="selectedArticle.image"
+        alt="Article image preview"
+        class="img-thumbnail mt-2"
+        style="max-height: 150px"
+      />
+    </div>
+
+    <button
+      class="form-button btn btn-primary mt-3"
+      [disabled]="updateArticle.invalid"
+    >
+      Update Article
+    </button>
+  </form>
+</div>

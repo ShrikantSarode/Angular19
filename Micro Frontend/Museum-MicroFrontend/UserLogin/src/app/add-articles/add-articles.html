@@ -1,0 +1,101 @@
+<h1 class="text-center mt-5 mb-4">Add Article For Museum</h1>
+
+<div class="add-product">
+  <p class="message-p">{{ addProductMessage }}</p>
+
+  <form #addArticle="ngForm" (ngSubmit)="submit(addArticle.value)" novalidate>
+    <label for="artName">Art Name</label>
+    <input
+      class="form-input"
+      type="text"
+      name="artName"
+      placeholder="Enter Article Name"
+      ngModel
+      required
+    />
+
+    <label for="">Price</label>
+    <input
+      class="form-input"
+      type="number"
+      name="price"
+      placeholder="Enter Article Price"
+      ngModel
+      required
+      min="0"
+      step="1"
+    />
+
+    <label for="">Description</label>
+    <textarea
+      class="form-input"
+      name="description"
+      placeholder="Enter Article Description"
+      ngModel
+      rows="3"
+    ></textarea>
+
+    <label for="">MuseumId</label>
+    <input
+      class="form-input"
+      type="number"
+      name="museumId"
+      placeholder="Enter Museum ID"
+      ngModel
+      required
+      min="1"
+      step="1"
+    />
+
+    <label for="">Quantity</label>
+    <input
+      class="form-input"
+      type="number"
+      name="quantity"
+      placeholder="Enter Article Quantity"
+      ngModel
+      required
+      min="0"
+      step="1"
+    />
+
+    <label for="">Image</label>
+    <input
+      class="form-input"
+      type="text"
+      name="image"
+      placeholder="Enter Article Image URL"
+      ngModel
+      required
+    />
+
+    <label for="">Stock</label>
+    <input
+      class="form-input"
+      type="number"
+      name="remainingStock"
+      placeholder="Enter Remaining Stock"
+      ngModel
+      min="0"
+      step="1"
+      required
+    />
+
+    <div class="text-center mt-3">
+      <img
+        *ngIf="addArticle.value.image"
+        [src]="addArticle.value.image"
+        alt="Article image preview"
+        class="img-thumbnail mt-2"
+        style="max-height: 150px"
+      />
+    </div>
+
+    <button
+      class="form-button btn btn-success mt-3"
+      [disabled]="addArticle.invalid"
+    >
+      Add Article
+    </button>
+  </form>
+</div>

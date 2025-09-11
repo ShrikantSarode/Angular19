@@ -47,4 +47,18 @@ export const routes: Routes = [
         (m) => m.ManageArticlesModule
       ),
   },
+  {
+    path: 'add-articles',
+    loadChildren: () =>
+      import('./add-articles/add-articles-module').then(
+        (m) => m.AddArticlesModule
+      ),
+  },
+  {
+    path: 'update-articles',
+    loadChildren: () =>
+      import('./update-articles/update-articles-module').then(
+        (m) => m.UpdateArticlesModule
+      ),
+  },
 ];

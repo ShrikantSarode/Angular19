@@ -9,46 +9,97 @@
 
   <!-- heading -->
   <h3 class="text-center">Artworks</h3>
-  <button class="btn btn-success text-center w-100" routerLink="/mfe1">Add Arts</button>
-  <!-- cards -->
+  <button
+    class="btn btn-success text-center w-100"
+    routerLink="/mfe1/add-articles"
+    type="button"
+    aria-label="Add a new article"
+  >
+    Add Arts
+  </button>
 
+  <!-- cards -->
   <div class="art-list">
     <div class="art-items container">
       <div class="row d-flex justify-content-center">
         <div class="col-12 p-4">
-          <div
-            class="art-details mt-3 d-flex justify-content-start align-items-center"
-          >
+          <div class="art-details mt-3 d-flex justify-content-start align-items-center w-100">
+            
+            <!-- Error -->
+            <div *ngIf="error" class="alert alert-danger w-100 mb-3" role="alert">
+              {{ error }}
+            </div>
+
+            <!-- Loading -->
+            <div *ngIf="loading" class="w-100 text-center my-4">
+              <div class="spinner-border text-primary" role="status" aria-label="Loading"></div>
+            </div>
+
+            <!-- Table -->
             <table
-              class="table table-bordered table-dark table-striped text-center"
+              *ngIf="!loading"
+              class="table table-bordered table-dark table-striped text-center mb-0"
+              aria-label="Articles table"
             >
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Description</th>
-                  <th>Action</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr *ngFor="let art of artItems">
+                <!-- Use 'art' consistently -->
+                <tr *ngFor="let art of artItems; trackBy: trackById">
                   <td>
                     <img
                       [src]="art.image"
-                      alt="{{ art.artName }}"
-                      width="50px"
+                      [alt]="art.artName || 'Artwork image'"
+                      width="80"
+                      height="80"
+                      style="object-fit: cover; border-radius: 8px"
+                      loading="lazy"
                     />
                   </td>
-                  <td>{{ art.artName }}</td>
-                  <td>{{ art.price }}</td>
-                  <td>{{ art.description }}</td>
-                  <td>
-                    <button class="btn btn-warning me-3 mt-4">Update</button><button class="btn btn-danger mt-4">Delete</button>
+                  <td class="text-start">{{ art.artName }}</td>
+                  <td>{{ art.price | currency:'INR':'symbol-narrow' }}</td>
+                  <td class="text-start">
+                    <span title="{{ art.description }}">
+                      {{ art.description }}
+                    </span>
                   </td>
+                  <td>
+                    <button
+                      class="btn btn-warning me-2"
+                      type="button"
+                      [routerLink]="['/mfe1/update-articles', art.articleId || art.articleId]"
+                      [disabled]="!(art.articleId || art.articleId)"
+                      aria-label="Update this article"
+                    >
+                      Update
+                    </button>
+
+                    <button
+                      class="btn btn-danger"
+                      type="button"
+                      (click)="onDelete(art.articleId || art.articleId)"
+                      [disabled]="!(art.articleId || art.articleId)"
+                      aria-label="Delete this article"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
+                <tr *ngIf="!artItems?.length">
+                  <td colspan="5" class="text-center">No articles found.</td>
                 </tr>
               </tbody>
             </table>
+
           </div>
         </div>
       </div>

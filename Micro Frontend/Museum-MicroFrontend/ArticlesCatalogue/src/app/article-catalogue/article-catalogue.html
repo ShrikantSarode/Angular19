@@ -13,10 +13,49 @@
 
   <div class="container mt-5">
     <div class="row">
-      <div class="col-6">
+      <div class="col-8">
         <h3>The Art Hunt</h3>
       </div>
-      <div class="col-6 d-flex justify-content-end mb-5">
+
+      <div class="col-2 d-flex justify-content-end mb-5">
+        <button
+          class="btn btn-warning ms-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasWithBothOptions"
+          aria-controls="offcanvasWithBothOptions"
+        >
+          <span class="text-dark">🛒 Inventory</span>
+        </button>
+
+        <div
+          class="offcanvas offcanvas-start"
+          id="offcanvasWithBothOptions"
+          aria-labelledby="offcanvasWithBothOptionsLabel"
+          tabindex="-1"
+          data-bs-scroll="true"
+          data-bs-backdrop="false"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+              Remaining Stock
+            </h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <p>
+              Try scrolling the rest of the page to see this option in action.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-2 d-flex justify-content-end mb-5">
         <button class="btn btn-success" (click)="onCheckedOut()">
           CheckOut
         </button>

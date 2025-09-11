@@ -53,6 +53,32 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'mfe1',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4100/remoteEntry.js',
+
+        exposedModule: './AddArticlesModule',
+      })
+        .then((m) => m.AddArticlesModule)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: 'mfe1',
+    loadChildren: () => {
+      return loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4100/remoteEntry.js',
+
+        exposedModule: './UpdateArticlesModule',
+      })
+        .then((m) => m.UpdateArticlesModule)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
     path: 'mfe2',
     loadChildren: () => {
       return loadRemoteModule({

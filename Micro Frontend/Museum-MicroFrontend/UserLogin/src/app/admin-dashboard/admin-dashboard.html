@@ -5,19 +5,63 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link " routerLink="/mfe1/overview" >
-              📊 Overview
+            <a class="nav-link" routerLink="/mfe1/overview"> 📊 Overview </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/mfe1/manage-users"
+              (click)="NavigateToManageUsers()"
+            >
+              👥 Manage Users
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/mfe1/manage-users"(click)="NavigateToManageUsers()">
-              👥 Manage Users 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/mfe1/manage-articles" (click)="NavigateToManageArticles()">
+            <a
+              class="nav-link"
+              routerLink="/mfe1/manage-articles"
+              (click)="NavigateToManageArticles()"
+            >
               ⚙️ Manage Articles
             </a>
+          </li>
+          <li>
+            <button
+              class="btn btn-warning ms-2"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasWithBothOptions"
+              aria-controls="offcanvasWithBothOptions"
+            >
+              <span class="text-primary">🛒 Inventory</span>
+            </button>
+
+            <div
+              class="offcanvas offcanvas-start"
+              id="offcanvasWithBothOptions"
+              aria-labelledby="offcanvasWithBothOptionsLabel"
+              tabindex="-1"
+              data-bs-scroll="true"
+              data-bs-backdrop="false"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+                  Remaining Stock
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>
+                  Try scrolling the rest of the page to see this option in
+                  action.
+                </p>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -25,7 +69,9 @@
 
     <!-- Main Content -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
         <h1 class="h2">Admin Dashboard</h1>
         <div class="row justify-content-end">
           <button class="btn btn-danger" (click)="Logout()">Logout</button>
@@ -38,7 +84,7 @@
           <div class="card text-white bg-primary">
             <div class="card-body">
               <h5 class="card-title">Total Users</h5>
-              <p class="card-text">{{users}}</p>
+              <p class="card-text">{{ users }}</p>
             </div>
           </div>
         </div>
@@ -46,7 +92,7 @@
           <div class="card text-white bg-success">
             <div class="card-body">
               <h5 class="card-title">Articles</h5>
-              <p class="card-text">{{arts}}</p>
+              <p class="card-text">{{ arts }}</p>
             </div>
           </div>
         </div>
@@ -54,7 +100,7 @@
           <div class="card text-white bg-warning">
             <div class="card-body">
               <h5 class="card-title">Orders</h5>
-              <p class="card-text">{{orders}}</p>
+              <p class="card-text">{{ orders }}</p>
             </div>
           </div>
         </div>
@@ -62,4 +108,3 @@
     </main>
   </div>
 </div>
- 

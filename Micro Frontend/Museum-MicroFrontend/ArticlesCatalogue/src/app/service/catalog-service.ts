@@ -4,19 +4,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'any'
+  providedIn: 'any',
 })
 export class CatalogService {
-
   apiUrl = 'http://localhost:9092/artCatalogue';
 
-  constructor(private http:HttpClient,private route:Router) { }
+  constructor(private http: HttpClient, private route: Router) {}
 
-  getCatalog(){
+  getCatalog() {
     return this.http.get(`${this.apiUrl}/allArticles`);
   }
-
- 
-
-  
 }

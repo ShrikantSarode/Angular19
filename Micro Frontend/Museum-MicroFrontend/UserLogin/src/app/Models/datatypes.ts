@@ -8,7 +8,7 @@ export interface Order {
 
 export interface Article {
  
-  articleId?: number;
+  id?: number;
   artName: string;
   description: string;
   price: number;

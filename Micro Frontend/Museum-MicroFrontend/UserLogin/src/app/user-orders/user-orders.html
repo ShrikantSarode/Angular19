@@ -1,6 +1,6 @@
 <div class="orders">
-  <h2 class="text-center mt-5 mb-5">Your Orders</h2>
-  <table *ngIf="orders.length > 0; else noOrders" class="table table-striped">
+  <h2 class="text-center mt-5 ">Your Orders</h2>
+  <table *ngIf="orders.length > 0; else noOrders" class="table table-striped ">
     <thead>
       <tr>
         <th>User Id</th>
@@ -12,11 +12,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{order.userId}}</td>
-        <td>{{ order.orderId }}</td>
-        <td>{{ order.articleId }}</td>
-        <td>{{ order.quantity }}</td>
-        <td>{{ order.totalPrice }}</td>
+        <td class="text-warning">{{order.userId}}</td>
+        <td class="text-warning">{{ order.orderId }}</td>
+        <td class="text-warning">{{ order.articleId }}</td>
+        <td class="text-warning">{{ order.quantity }}</td>
+        <td class="text-warning">{{ order.totalPrice }}</td>
       </tr>
     </tbody>
   </table>

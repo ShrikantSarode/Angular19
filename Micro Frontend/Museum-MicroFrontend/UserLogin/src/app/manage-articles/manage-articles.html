@@ -7,7 +7,6 @@
     </div>
   </div>
 
-  <!-- heading -->
   <h3 class="text-center">Artworks</h3>
   <button
     class="btn btn-success text-center w-100"
@@ -18,24 +17,29 @@
     Add Arts
   </button>
 
-  <!-- cards -->
   <div class="art-list">
     <div class="art-items container">
       <div class="row d-flex justify-content-center">
         <div class="col-12 p-4">
-          <div class="art-details mt-3 d-flex justify-content-start align-items-center w-100">
-            
-            <!-- Error -->
-            <div *ngIf="error" class="alert alert-danger w-100 mb-3" role="alert">
+          <div
+            class="art-details mt-3 d-flex justify-content-start align-items-center w-100"
+          >
+            <div
+              *ngIf="error"
+              class="alert alert-danger w-100 mb-3"
+              role="alert"
+            >
               {{ error }}
             </div>
 
-            <!-- Loading -->
             <div *ngIf="loading" class="w-100 text-center my-4">
-              <div class="spinner-border text-primary" role="status" aria-label="Loading"></div>
+              <div
+                class="spinner-border text-primary"
+                role="status"
+                aria-label="Loading"
+              ></div>
             </div>
 
-            <!-- Table -->
             <table
               *ngIf="!loading"
               class="table table-bordered table-dark table-striped text-center mb-0"
@@ -43,6 +47,7 @@
             >
               <thead>
                 <tr>
+                  <th scope="col">Id</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
@@ -52,8 +57,8 @@
               </thead>
 
               <tbody>
-                <!-- Use 'art' consistently -->
                 <tr *ngFor="let art of artItems; trackBy: trackById">
+                  <td>{{ art.id }}</td>
                   <td>
                     <img
                       [src]="art.image"
@@ -65,7 +70,7 @@
                     />
                   </td>
                   <td class="text-start">{{ art.artName }}</td>
-                  <td>{{ art.price | currency:'INR':'symbol-narrow' }}</td>
+                  <td>{{ art.price | currency : "INR" : "symbol-narrow" }}</td>
                   <td class="text-start">
                     <span title="{{ art.description }}">
                       {{ art.description }}
@@ -73,11 +78,9 @@
                   </td>
                   <td>
                     <button
-                      class="btn btn-warning me-2"
-                      type="button"
-                      [routerLink]="['/mfe1/update-articles', art.articleId || art.articleId]"
-                      [disabled]="!(art.articleId || art.articleId)"
-                      aria-label="Update this article"
+                    class="btn btn-warning"
+                      (click)="onUpdate(art.id)"
+                      [disabled]="!art.id"
                     >
                       Update
                     </button>
@@ -85,8 +88,8 @@
                     <button
                       class="btn btn-danger"
                       type="button"
-                      (click)="onDelete(art.articleId || art.articleId)"
-                      [disabled]="!(art.articleId || art.articleId)"
+                      (click)="onDelete(art.id || art.id)"
+                      [disabled]="!(art.id || art.id)"
                       aria-label="Delete this article"
                     >
                       Delete
@@ -99,7 +102,6 @@
                 </tr>
               </tbody>
             </table>
-
           </div>
         </div>
       </div>

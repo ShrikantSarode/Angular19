@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServices } from '../services/user-services';
 import { FormsModule } from '@angular/forms';
@@ -9,13 +9,12 @@ import { jwtDecode } from 'jwt-decode';
   selector: 'app-user-login',
   imports: [FormsModule, CommonModule],
   templateUrl: './user-login.html',
-  styleUrl: './user-login.css',
+  styleUrls: ['./user-login.css'],
 })
 export class UserLogin {
-  toggleLogin: boolean = false;
+  toggleLogin = false;
   signupSuccess = false;
-
-  constructor(private route: Router, private loginServices: UserServices) {}
+  errorMessage: string | null = null;
 
   formData = {
     userName: '',
@@ -24,82 +23,71 @@ export class UserLogin {
     role: '',
   };
 
-  toggle() {
+  constructor(
+    private route: Router,
+    private loginServices: UserServices,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  toggle(): void {
     this.toggleLogin = !this.toggleLogin;
     this.signupSuccess = false;
+    this.errorMessage = null;
+    this.cdr.detectChanges();
   }
 
-  signUp() {
+  signUp(): void {
+    this.errorMessage = null;
+    this.cdr.detectChanges();
+
     this.loginServices.signUp(this.formData).subscribe({
       next: (res: any) => {
-         
-          this.signupSuccess = true;
-          this.toggleLogin = true;
-          console.log(this.toggleLogin);
-          console.log('Sign up successful:', res);
-        
-
-        // alert('Sign up successful!');
-
-        this.route.navigate(['/mfe1']);
+        this.signupSuccess = true;
+        this.toggleLogin = true;
+        this.cdr.detectChanges();
+        console.log('Sign up successful:', res);
       },
-      error: (err) => {
+      error: (err: string) => {
         console.error('Sign up failed:', err);
-        alert('Sign up failed. Please check your credentials.');
+        this.errorMessage = err;
+        this.cdr.detectChanges();
       },
     });
   }
 
-  login() {
-  console.log('Logging in with:', this.formData);
+  login(): void {
+    this.errorMessage = null;
+    this.cdr.detectChanges();
+    console.log('Logging in with:', this.formData);
 
-  this.loginServices.login(this.formData).subscribe({
-    next: (res: any) => {
-      console.log('Login successful:', res);
-      alert('Login successful!');
+    this.loginServices.login(this.formData).subscribe({
+      next: (res: any) => {
+        console.log('Login successful:', res);
 
-      // Store token
-      localStorage.setItem('token', res.token);
+        // Store token
+        localStorage.setItem('token', res.token);
 
-      
-const decoded = jwtDecode<{ userId: number, roles: string[] }>(res.token);
-      localStorage.setItem('userId', decoded.userId.toString());
-      localStorage.setItem('role', decoded.roles[0]);
+        const decoded = jwtDecode<{ userId: number; roles: string[] }>(
+          res.token
+        );
+        localStorage.setItem('userId', decoded.userId.toString());
+        localStorage.setItem('role', decoded.roles[0]);
 
-
-      // Role-based navigation
-      const role = res.role;
-      if (role === 'Admin') {
-        this.route.navigate(['/mfe1/dashboard']);
-      } else if (role === 'User') {
-        this.route.navigate(['/mfe2']);
-      } else {
-        alert('Unknown role. Access denied.');
-      }
-    },
-    error: (err) => {
-      console.error('Login failed:', err);
-      alert('Login failed. Please check your credentials.');
-    },
-  });
-}
-
-
-  // login() {
-  //   console.log('Logging in with:', this.formData);
-  //   this.loginServices.login(this.formData).subscribe({
-  //     next: (res: any) => {
-  //       console.log('Login successful:', res);
-  //       alert('Login successful!');
-
-  //       localStorage.setItem('token', res.token);
-
-  //       this.route.navigate(['/mfe1/dashboard']);
-  //     },
-  //     error: (err) => {
-  //       console.error('Login failed:', err);
-  //       alert('Login failed. Please check your credentials.');
-  //     },
-  //   });
-  // }
+        // Role-based navigation
+        const role = res.role;
+        if (role === 'Admin') {
+          this.route.navigate(['/mfe1/dashboard']);
+        } else if (role === 'User') {
+          this.route.navigate(['/mfe2']);
+        } else {
+          alert('Unknown role. Access denied.');
+        }
+      },
+      error: (err: string) => {
+        console.error('Login failed:', err);
+        this.errorMessage = err;
+        this.cdr.detectChanges();
+      },
+    });
+  }
 }

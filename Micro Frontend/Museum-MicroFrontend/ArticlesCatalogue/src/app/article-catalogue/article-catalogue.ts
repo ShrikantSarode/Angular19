@@ -16,7 +16,13 @@ export class ArticleCatalogue {
   artItemsCart: any[] = [];
   orderSummary: any = {};
 
-  constructor(private catalogService: CatalogService, private router: Router, private cdr: ChangeDetectorRef) {}
+  public Math = Math;
+
+  constructor(
+    private catalogService: CatalogService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.catalogService.getCatalog().subscribe((res: any) => {
@@ -27,8 +33,10 @@ export class ArticleCatalogue {
   }
 
   decrementQuantity(art: any) {
+    if (!art) return;
+
     if (art.quantity > 0) {
-      art.quantity--;
+      art.quantity = art.quantity - 1;
 
       const index = this.artItemsCart.findIndex((item) => item.id === art.id);
 
@@ -36,12 +44,28 @@ export class ArticleCatalogue {
         this.artItemsCart.splice(index, 1);
       } else if (index !== -1) {
         this.artItemsCart[index] = { ...art };
+      } else if (art.quantity > 0) {
+        this.artItemsCart.push({ ...art });
       }
+    } else {
+      art.quantity = 0;
     }
   }
 
   incrementQuantity(art: any) {
-    art.quantity++;
+    if (!art) return;
+
+    const max = Number.isFinite(art?.remainingStock) ? art.remainingStock : 0;
+    if (art.quantity >= max) {
+      alert(
+        max > 0
+          ? `Only ${max} left in stock for "${art.artName}".`
+          : `"${art.artName}" is out of stock.`
+      );
+      return;
+    }
+
+    art.quantity = art.quantity + 1;
 
     const index = this.artItemsCart.findIndex((item) => item.id === art.id);
 

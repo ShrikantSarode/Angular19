@@ -1,0 +1,104 @@
+<div class="container mt-5 mb-5">
+  <h2 class="mt-5 mb-5">Static Chips</h2>
+  <mat-chip-set aria-label="Fish selection">
+    <mat-chip>One fish</mat-chip>
+    <mat-chip>Two fish</mat-chip>
+    <mat-chip>Three fish</mat-chip>
+    <mat-chip disabled>Four fish</mat-chip>
+  </mat-chip-set>
+
+  <div class="mt-5 mb-5">
+    <h2>Disabled appearance</h2>
+
+    <mat-chip disabled>Orange</mat-chip>
+  </div>
+
+  <div class="mt-5 mb-5">
+    <h2>Chips connected to an input field</h2>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Favorite Fruits</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter fruits">
+        @for (fruit of fruits(); track fruit) {
+        <mat-chip-row
+          (removed)="remove(fruit)"
+          [editable]="true"
+          (edited)="edit(fruit, $event)"
+          [aria-description]="'press enter to edit ' + fruit.name"
+        >
+          <button matChipEdit [attr.aria-label]="'edit ' + fruit.name">
+            <mat-icon>edit</mat-icon>
+          </button>
+          {{ fruit.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+        <input
+          placeholder="New fruit..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+  </div>
+
+  <!--  -->
+
+  <section>
+    <h4>Chips inside of a Template-driven form</h4>
+    <mat-form-field class="example-form-field">
+      <mat-label>Video keywords</mat-label>
+      <mat-chip-grid
+        #templateChipGrid
+        aria-label="Enter template form keywords"
+        [(ngModel)]="templateKeywords"
+      >
+        @for (keyword of templateKeywords(); track keyword) {
+        <mat-chip-row (removed)="removeTemplateKeyword(keyword)">
+          {{ keyword }}
+          <button
+            matChipRemove
+            [attr.aria-label]="'remove template form' + keyword"
+          >
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input
+        placeholder="New keyword..."
+        [matChipInputFor]="templateChipGrid"
+        (matChipInputTokenEnd)="addTemplateKeyword($event)"
+      />
+    </mat-form-field>
+  </section>
+  <!--  -->
+
+  <form>
+    <mat-form-field class="example-chip-list mb-5 mt-5">
+      <mat-label class="mb-5 mt-5">Favorite Fruits</mat-label><br>
+      <mat-chip-grid #chipGrid aria-label="Fruit selection">
+        @for (fruit of fruits(); track $index) {
+        <mat-chip-row (removed)="remove(fruit)">
+          {{ fruit }}
+          <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input
+        name="currentFruit"
+        placeholder="New Fruit..."
+        #fruitInput
+        [(ngModel)]="currentFruit"
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-form-field>
+  </form>
+</div>

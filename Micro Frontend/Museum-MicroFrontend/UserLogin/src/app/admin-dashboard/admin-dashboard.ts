@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServices } from '../services/user-services';
 import { count } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css',
 })
@@ -14,6 +15,9 @@ export class AdminDashboard implements OnInit {
   orders: number = 0;
   arts: number = 0;
   users: number = 0;
+
+   public Math = Math;
+
   constructor(
     private route: Router,
     private services: UserServices,

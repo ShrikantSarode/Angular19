@@ -55,7 +55,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'update-articles',
+    path: 'update-articles/:id',
     loadChildren: () =>
       import('./update-articles/update-articles-module').then(
         (m) => m.UpdateArticlesModule

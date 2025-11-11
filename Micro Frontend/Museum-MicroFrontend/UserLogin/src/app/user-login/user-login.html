@@ -1,6 +1,13 @@
-@if(toggleLogin) {
-<div class="loginBox mb-4">
+<!-- user-login.html -->
+
+<div *ngIf="toggleLogin; else signUpTemplate" class="loginBox mb-4">
   <h4 class="text-center login-head">Login</h4>
+
+  <!-- Error Message on top - FIXED -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+    {{ errorMessage }}
+  </div>
+
   <div class="container d-flex justify-content-center mt-5 form-bg">
     <div class="row">
       <div class="col-12">
@@ -36,96 +43,98 @@
           <button type="submit" class="btn btn-success w-100">Login</button>
 
           <p class="text-center fs-5 mt-3">
-            <a routerLink="signUp" (click)="toggle()"
-              >I have no account 👉 Click here to sign up</a
-            >
+            <a href="javascript:void(0)" (click)="toggle()">
+              I have no account 👉 Click here to sign up
+            </a>
           </p>
         </form>
       </div>
     </div>
   </div>
 </div>
-}@else {
-<div class="signUpBox mb-4">
-  <h6 class="text-center login-head">Sign Up</h6>
 
-  <div *ngIf="signupSuccess" class="alert alert-success text-center mt-3">
-    Signup successful! Please login.
-  </div>
+<ng-template #signUpTemplate>
+  <div class="signUpBox mb-4">
+    <h6 class="text-center login-head">Sign Up</h6>
 
-  <div class="container d-flex justify-content-center mt-5 form-bg">
-    <div class="row">
-      <div class="col-12">
-        <form (ngSubmit)="signUp()" #signUpForm="ngForm">
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              name="username"
-              [(ngModel)]="formData.userName"
-              required
-              autofocus
-            />
-          </div>
+    <!-- Error Message on top -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+      {{ errorMessage }}
+    </div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              [(ngModel)]="formData.email"
-              required
-              autofocus
-            />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
+    <div *ngIf="signupSuccess" class="alert alert-success text-center mt-3">
+      Signup successful! Please login.
+    </div>
+
+    <div class="container d-flex justify-content-center mt-5 form-bg">
+      <div class="row">
+        <div class="col-12">
+          <form (ngSubmit)="signUp()" #signUpForm="ngForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                [(ngModel)]="formData.userName"
+                required
+                autofocus
+              />
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              [(ngModel)]="formData.password"
-              required
-            />
-          </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="formData.email"
+                required
+              />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
 
-          <div class="mb-3">
-            <label for="role" class="form-label">Role</label>
-            <select
-              class="form-select"
-              id="role"
-              name="role"
-              [(ngModel)]="formData.role"
-              required
-            >
-              <option value="" disabled selected>Select role</option>
-              <option value="User">User</option>
-              <option value="Admin">Admin</option>
-            </select>
-          </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="formData.password"
+                required
+              />
+            </div>
 
-         
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select
+                class="form-select"
+                id="role"
+                name="role"
+                [(ngModel)]="formData.role"
+                required
+              >
+                <option value="" disabled>Select role</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+
             <button type="submit" class="btn btn-warning w-100">Sign Up</button>
-         
 
-          <!-- Link to Login -->
-          <p class="text-center fs-5 mt-3">
-            <a routerLink="login" (click)="toggle()"
-              >Already have an account? 👉 Click here to Login</a
-            >
-          </p>
-        </form>
+            <p class="text-center fs-5 mt-3">
+              <a href="javascript:void(0)" (click)="toggle()">
+                Already have an account? 👉 Click here to Login
+              </a>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-}
+</ng-template>

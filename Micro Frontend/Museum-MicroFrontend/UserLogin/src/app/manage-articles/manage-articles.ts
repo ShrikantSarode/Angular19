@@ -31,25 +31,25 @@ export class ManageArticles implements OnInit {
 
   ngOnInit(): void {
     this.fetchArticles();
+    this.cdr.detectChanges();
   }
 
   private fetchArticles(): void {
     this.loading = true;
     this.userServices.getCatalog().subscribe({
       next: (res: any) => {
-        
         this.artItems = (res ?? []).map((item: any) => ({
           ...item,
           quantity: item.quantity ?? 0,
         }));
         this.loading = false;
 
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.loading = false;
         this.error = err?.message || 'Failed to load catalogue.';
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       },
     });
   }
@@ -66,7 +66,7 @@ export class ManageArticles implements OnInit {
       } else if (index !== -1) {
         this.artItemsCart[index] = { ...art };
       }
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     }
   }
 
@@ -78,27 +78,47 @@ export class ManageArticles implements OnInit {
     } else {
       this.artItemsCart[index] = { ...art };
     }
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   onDelete(id?: number): void {
-    const realId = id ?? 0;
-    if (!realId) return;
+    const articleId = id ?? 0;
 
-    if (!confirm('Are you sure you want to delete this article?')) return;
+    if (!articleId) {
+      alert('Invalid article ID');
+      return;
+    }
 
-    this.articleService.deleteArticle(realId).subscribe({
-      next: () => {
+    const confirmed = confirm(
+      'Are you sure you want to delete this article? This action cannot be undone.'
+    );
+    if (!confirmed) return;
+
+    this.articleService.deleteArticle(articleId).subscribe({
+      next: (response: string) => {
+        console.log('Delete response:', response);
+
         this.artItems = this.artItems.filter(
-          (a: any) => (a.articleId ?? a.id) !== realId
+          (article: any) => (article.articleId ?? article.id) !== articleId
         );
+
         alert('Article deleted successfully!');
-        this.cdr.markForCheck();
+
+        this.cdr.detectChanges();
       },
-      error: (err) => {
-        console.error('Delete failed:', err);
+      error: (error) => {
+        console.error('Delete failed:', error);
         alert('Delete failed. Please try again.');
       },
     });
+  }
+
+  onUpdate(articleId?: number): void {
+    if (!articleId) {
+      alert('Invalid article ID');
+      return;
+    }
+
+    this.router.navigate(['/mfe1/update-articles', articleId]);
   }
 }
